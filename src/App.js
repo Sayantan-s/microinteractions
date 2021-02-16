@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import styled from 'styled-components'
+import Accordion from './components/Accordion.component'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return (
+      <AccordionContainer>
+          <Accordion question="What's an accordion ?"/>
+      </AccordionContainer>
+    )
 }
 
-export default App;
+export default App
+
+
+const AccordionContainer = styled.div`
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+font-family: 'Inter', sans-serif;
+font-size : 62.5%;
+width: 50rem;
+background-color : var(--primary);
+`
