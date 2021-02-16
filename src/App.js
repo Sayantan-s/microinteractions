@@ -1,11 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 import Accordion from './components/Accordion.component'
+import data from './data/Accordiondata.json'
+
+console.log(data);
 
 const App = () => {
+
     return (
       <AccordionContainer>
-          <Accordion question="What's an accordion ?"/>
+         {
+           data.map(accordionData => (
+            <Accordion 
+              key={accordionData.answer}
+              {...accordionData}
+            />
+           ))
+         }
       </AccordionContainer>
     )
 }
