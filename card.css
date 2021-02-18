@@ -4,16 +4,12 @@
     --font : 'Inter', sans-serif;
     --bgcolor : #F4F8FB;
     --cardBg : #fff;
-    --dark : #303437;
-    --dark2 : #15161A;
+    --dark : #3c424b;
+    --dark2 : #262d37;
     --grey : #898A8C;
-    --twitter :#1FA1F3;
+    --twitter :#2ba7f3;
+    --twitterLight : #e1f0fa;
 }
-
-html{
-    font-size: 62.5%;
-}
-
 body{
     background-color : var(--bgcolor);
     font-family: var(--font);
@@ -30,15 +26,18 @@ body{
     align-items: center;
     flex-direction : column;
     position: relative;
+    overflow: hidden;
+    font-smooth: always;
 }
 
 .card_verified{
     position: absolute;
-    width: 22px;
-    height: 22px;
-    top: 20px;
-    left:20px;
+    width: 400px;
+    height: 400px;
+    top: -75px;
+    left:-60px;
     fill : var(--twitter);
+    fill-opacity: 0.1;
 }
 
 .card .card_img{
@@ -54,7 +53,7 @@ body{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    -webkit-filter: grayscale(90%);
+    -webkit-filter: grayscale(10%);
 }
 
 .card .card_identity{
@@ -91,33 +90,27 @@ body{
     margin-left: 22px;
 }
 
-.card .card_location .card_location--place path{
-    width : 18px;
-    height : 18px;
+.card .card_location .card_location--place svg{
+    width : 20px;
+    height : 20px;
 }
 
 .card .card_location .card_location--place svg path{
     fill : var(--dark);
 }
 
-.card .card_location .card_location--place svg:last-child path{
-    fill : var(--twitter);
-}
-
-.card .card_location .card_location--place-name{
+.card .card_location .card_location--place .card_location--place-name{
     font-size : 18px; 
     color : var(--dark);
     margin-left : 5px;
 }
 
-.card .card_location .card_location--chat{
-    margin-left : 30px;
-    width : 22px;
-    height : 22px;
+.card .card_location .card_location--place:last-child svg path{
+    fill : var(--twitter);
 }
 
-.card .card_location .card_location--chat path{
-    fill : var(--dark);
+.card .card_location .card_location--place:last-child .card_location--place-name{
+    color : var(--twitter);
 }
 
 .card .card_intro {
@@ -133,15 +126,20 @@ body{
 
 .card .card_activity{
     width : 100%;
-    display: flex;
-    justify-content: space-between;
     margin-top: 20px;
 }
 
 .card .card_activity .card_activity--flex{
+    float : left;
+    width : 33.1%;
     display : flex;
     flex-direction: column;
     align-items: center;
+    justify-content : center;
+}
+
+.card .card_activity .card_activity--flex:not(:last-child){
+    border-right: 1px solid rgba(0,0,0,0.09);
 }
 
 .card .card_activity .card_activity--flex .card_activity--flex-header{
