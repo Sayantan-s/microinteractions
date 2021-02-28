@@ -1,9 +1,8 @@
-import { motion } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { ChevronDown } from '../utils/Icon';
 
-const Accordion = ({ question,answer }) => {
+const Accordion = ({ hashtag,tweets,answer }) => {
 
     const [isOpen,setOpen] = useState(false);
     const [height,setHeight] = useState(0); 
@@ -16,55 +15,34 @@ const Accordion = ({ question,answer }) => {
         setHeight(accordionContentRef.current.scrollHeight);
     },[isOpen])
 
-    // Animations
-
-    const chevronAnimation = {
-        initial : {
-            rotate : 0
-        },
-        final : {
-            rotate : 180
-        }
-    }
-
-    const contentAnimation = {
-        initial : {
-            maxHeight : 0,
-            transition : {
-                duration : 0.3,
-                ease : "easeInOut"
-            }
-        },
-        final : {
-            maxHeight : height,
-            transition : {
-                duration : 0.3,
-                ease : "easeInOut"
-            }
-        }
-    }
-
     return (
         <AccordionItem>
-            <Button onClick={accordionToggler}>
-                <p className="btn_question">
-                    { question }
-                </p>
+            <Button 
+            active={isOpen}
+            onClick={accordionToggler}>
+                <div className="btn_question">
+                   <span>
+                   #{ hashtag }
+                   </span>
+                   <span>
+                       {tweets} tweets
+                   </span>
+                </div>
                 <ChevronDown
-                    variants={chevronAnimation}
-                    animate={isOpen ? "initial" : "final"}
-                    size={'2rem'} 
-                    fill="red"
+                    size={'1.5rem'} 
+                    fill="var(--color)"
                     className="btn_toggler"
                 />
             </Button>
             <AccordionContent
-            variants={contentAnimation}
-            animate={isOpen ? "initial" : "final"} 
+            active={isOpen}
+            height={height}
             ref={accordionContentRef}>
-                <p>
-                    {answer}
-                </p>
+               <div className="content">
+                    <p className="content_answer">
+                        {answer}
+                    </p>
+               </div>
             </AccordionContent>
         </AccordionItem>
     )
@@ -75,7 +53,7 @@ export default Accordion
 
 const AccordionItem = styled.div`
 width: 100%;
-color : var(--basecolor);
+color : var(--content);
 `
 const Button = styled.button`
 display :flex;
@@ -85,23 +63,42 @@ width: 100%;
 outline:none;
 border:none;
 cursor: pointer;
-padding: 2rem 3rem;
+padding: 1.5rem;
+background-color: inherit;
 .btn{
     &_question{
-        color : red;
+        font-size: 1.4rem;
+        color : var(--content);
         margin : 0;
         padding : 0;
+        display : flex;
+        flex-direction: column;
+        align-items : flex-start;
+        span{
+            &:first-child{
+                color : var(--color);
+                font-weight: 500;
+            }
+            &:nth-child(2){
+                font-size: 1.6rem;
+                margin-top: 0.6rem;
+            }
+        }
+    }
+    &_toggler{
+        transition : 0.3s all;
+        transform : ${props => props.active ? "rotate(180deg)" : 'rotate(0deg)'};
     }
 }
 `
-const AccordionContent = styled(motion.div)`
+const AccordionContent = styled.div`
     overflow: hidden;
+    transition : 0.3s all;
+    max-height : ${props => props.active ? `${props.height}px` : '0'};
     p{
-        font-size : 1.4rem;
+        font-size : 1.3rem;
         margin : 0;
-        padding : 2rem 1.5rem;
+        padding : 0rem 1.5rem 2rem 1.5rem;
         text-align: left;
-        word-break: break-all;
-        font-weight : 500;
     }
 `

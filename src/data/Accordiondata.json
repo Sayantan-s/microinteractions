@@ -1,6 +1,17 @@
 [
     {
-        "question" : "What's an accordion?",
+        "hashtag" : "laliga",
+        "tweets" : "4.2m",
+        "answer" : "An accordion menu is a vertically stacked list of headers that can be clicked to reveal or hide content associated with them. It is one of many ways you can expose content to users in a progressive manner."
+    },
+    {
+        "hashtag" : "covid19",
+        "tweets" : "20.1m",
+        "answer" : "An accordion menu is a vertically stacked list of headers that can be clicked to reveal or hide content associated with them. It is one of many ways you can expose content to users in a progressive manner."
+    },
+    {
+        "hashtag" : "qatar2020",
+        "tweets" : "8.7m",
         "answer" : "An accordion menu is a vertically stacked list of headers that can be clicked to reveal or hide content associated with them. It is one of many ways you can expose content to users in a progressive manner."
     }
 ]
