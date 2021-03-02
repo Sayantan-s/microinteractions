@@ -6,10 +6,15 @@ const GlobalStyles = createGlobalStyle`
     --basecolor : #242C36;
     --content : #777B84;
     --content2 : #303741;
-    --btn : red ;
 }
 html{
     font-size: 62.5%;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 `
 
